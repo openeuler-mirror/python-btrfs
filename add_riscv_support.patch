@@ -1,0 +1,11 @@
+--- a/btrfs/ioctl.py	2021-04-29 19:48:56.000000000 +0800
++++ b/btrfs/ioctl.py	2022-05-24 16:27:01.777363700 +0800
+@@ -46,7 +46,7 @@
+ # that hasn't been done yet!
+ arch = platform.machine()
+ if arch in ('x86_64', 'i686', 'i386', 'i586', 'amd64', 'ia64', 'm68k', 'i486') \
+-        or arch.startswith(('aarch64', 'arm', 's390')):
++        or arch.startswith(('aarch64', 'arm', 's390', 'riscv64')):
+     _IOC_SIZEBITS = 14
+     _IOC_DIRBITS = 2
+     _IOC_NONE = 0
