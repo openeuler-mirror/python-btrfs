@@ -1,10 +1,12 @@
 Name:           python-btrfs
 Version:        13
-Release:        1
+Release:        2
 Summary:        Python module to inspect btrfs filesystems
 License:        LGPLv3 and GPLv3
 URL:            https://github.com/knorrie/python-btrfs
 Source0:        https://github.com/knorrie/python-btrfs/archive/v13/python-btrfs-13.tar.gz
+Patch01:        add_riscv_support.patch
+Patch02:        dont-monkey-patch-for-sphinx4.patch
 BuildArch:      noarch
 BuildRequires:  make
 BuildRequires:  python3-devel
@@ -32,7 +34,7 @@ data structures, presenting them as python objects with interesting attributes\
 and references to other objects.
 
 %prep
-%autosetup
+%autosetup -p1
 # Remove dangling symlink
 rm -f examples/btrfs
 # Don't pull additional dependencies in doc
@@ -69,5 +71,8 @@ install -m 0644 man/* %{buildroot}%{_mandir}/man1
 %license COPYING.LESSER
 
 %changelog
+* Wed Jun 15 2022 lvxiaoqian <xiaoqian@nj.iscas.ac.cn> - 13-2
+- add riscv support and fix build issue
+
 * Wed Jun 30 2021 liliang <liliang@kylinos.cn> - 13-1
 - Init project
